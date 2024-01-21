@@ -1,0 +1,33 @@
+{
+  "name": "tt-extension",
+  "displayName": "tt",
+  "description": "keep track of your precious time",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "license":"GPL-2.0-only",
+  "scripts": {
+    "compile": "tsc -p ./"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:plaintext"
+],
+  "contributes": {
+    "languages": [{
+        "id": "tt",
+        "extensions": [".tt"]
+    }],
+    "grammars": [{
+        "language": "tt",
+        "scopeName": "text.tt",
+        "path": "./syntaxes/tt.tmGrammar.json"
+    }]
+},
+  "devDependencies": {
+    "@types/vscode": "^1.85",
+    "@types/node": "18.x",
+    "typescript": "^5.2.2"
+  }
+}
