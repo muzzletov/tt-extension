@@ -4,8 +4,10 @@
   "description": "keep track of your precious time",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.0.0"
+    "vscode": "^1.60.0"
   },
+  "repository": {"url": "https://github.com/muzzletov/tt-extension"},
+  "author": {"name": "muzzletov"},
   "license":"GPL-2.0-only",
   "scripts": {
     "compile": "tsc -p ./"
@@ -26,7 +28,7 @@
     }]
 },
   "devDependencies": {
-    "@types/vscode": "^1.85",
+    "@types/vscode": "^1.60.0",
     "@types/node": "18.x",
     "typescript": "^5.2.2"
   }

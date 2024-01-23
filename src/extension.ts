@@ -14,8 +14,6 @@ const state: State = {
 export function activate(context: vscode.ExtensionContext) {
   
     context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(event => {
-        state.decorators.forEach(decorator=>decorator.dispose());
-        state.decorators.length = 0;
         update(printRangeChanges);
     }));
 
@@ -33,6 +31,9 @@ function printRangeChanges () {
 
     for (let i = startingLine; i < endingLine+1; i++) {
         const line = vscode.window.activeTextEditor!.document.lineAt(i).text
+        
+        if(line.startsWith("#")) return;
+
         const [start, end] = line?.split("-") ?? [];
         const [day, month] = line?.split(".") ?? [];
   
@@ -70,13 +71,15 @@ function printRangeChanges () {
         }
     });
 
-    decorationOptions.push({range: new vscode.Range(endingLine+1, 0, endingLine+1, 0)});
+    decorationOptions.push({range: new vscode.Range(endingLine+2, 0, endingLine+2, 0)});
     vscode.window.activeTextEditor!.setDecorations(gutterDecorationType, decorationOptions);
     state.decorators.push(gutterDecorationType);
 
 }
 
 function update(callback: ()=>void) {
+    state.decorators.forEach(decorator=>decorator.dispose());
+    state.decorators.length = 0;
     clearTimeout(state.timeout)
     state.timeout = setTimeout(callback, 800);
 }
