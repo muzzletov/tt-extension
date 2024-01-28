@@ -4,14 +4,11 @@ interface State {
     lastUpdate: number;
     timeout?: NodeJS.Timeout;
     decorators:     vscode.TextEditorDecorationType[];
-    editorChange: boolean;
-    resetTimeout?: NodeJS.Timeout;
 }
 
 const state: State = {
     lastUpdate: Date.now(), 
     decorators: [],
-    editorChange: false
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -82,7 +79,6 @@ function addDecorator(contentText: string, line: number, atEnd = false) {
     } 
     const prevLineText = vscode.window.activeTextEditor?.document.lineAt(line).text
     if ((prevLineText !== "\n" && prevLineText !== "")) {
-        state.editorChange = true
         vscode.window.activeTextEditor!.edit(builder=>builder.insert(new vscode.Position(line, 0), "\n"))
     }
     const decorationOptions: vscode.DecorationOptions[] = []
@@ -104,11 +100,7 @@ function addDecorator(contentText: string, line: number, atEnd = false) {
 }
 
 function update(callback: ()=>void) {
-    if(state.editorChange) {
-        clearTimeout(state.resetTimeout)
-        state.resetTimeout = setTimeout(()=>state.editorChange = false, 200);
-        return;
-    }
+
     state.decorators.forEach(decorator=>decorator.dispose());
     state.decorators.length = 0;
     clearTimeout(state.timeout)

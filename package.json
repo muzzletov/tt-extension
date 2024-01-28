@@ -2,13 +2,14 @@
   "name": "tt-extension",
   "displayName": "tt",
   "description": "keep track of your precious time",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.60.0"
   },
   "repository": {"url": "https://github.com/muzzletov/tt-extension"},
   "author": {"name": "muzzletov"},
   "license":"GPL-2.0-only",
+  "publisher":"muzzletov",
   "scripts": {
     "compile": "tsc -p ./"
   },
