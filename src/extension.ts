@@ -100,7 +100,6 @@ function addDecorator(contentText: string, line: number, atEnd = false) {
 }
 
 function update(callback: ()=>void) {
-
     state.decorators.forEach(decorator=>decorator.dispose());
     state.decorators.length = 0;
     clearTimeout(state.timeout)

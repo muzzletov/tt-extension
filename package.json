@@ -2,7 +2,7 @@
   "name": "tt-extension",
   "displayName": "tt",
   "description": "keep track of your precious time",
-  "version": "0.0.2",
+  "version": "1.0.3",
   "engines": {
     "vscode": "^1.60.0"
   },
