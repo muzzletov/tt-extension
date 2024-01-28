@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-const TIMEOUT = 800; //MS
+const TIMEOUT = 400; //MS
 
 interface State {
     lastUpdate: number;
@@ -96,12 +96,12 @@ function addDecorator(contentText: string, line: number, atEnd = false) {
     const gutterDecorationType = vscode.window.createTextEditorDecorationType({
         before: {
             contentText,
-            margin: '0 0 60px 5px',
-            width: '60px',
-            height: '60px',
+            margin: '0 0 0 0',
+            width: '30px',
+            height: '30px',
             fontWeight: 'bold',
-            color: "#aabbaa",
-            textDecoration: '; font-size: 0.9em;'
+            color: "#9999dd",
+            textDecoration: '; font-size: 0.82em;'
         }
     });
     
