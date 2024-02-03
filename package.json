@@ -21,11 +21,6 @@
     "languages": [{
         "id": "tt",
         "extensions": [".tt"]
-    }],
-    "grammars": [{
-        "language": "tt",
-        "scopeName": "text.tt",
-        "path": "./syntaxes/tt.tmGrammar.json"
     }]
 },
   "devDependencies": {
